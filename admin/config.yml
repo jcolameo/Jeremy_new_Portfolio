@@ -1,0 +1,85 @@
+# Decap CMS — Decap Turbo (turbo-github) backend.
+# Scope: only the three existing data files under assets/data/.
+
+backend:
+  name: turbo-github
+  # Turbo ignores `repo` (the site row in the Turbo dashboard wins); kept identical on purpose.
+  # If Turbo ever reports "requested repo does not match", remove this line.
+  repo: jcolameo/Jeremy_new_Portfolio
+  branch: main
+  turbo_site_id: c4084d7a-0247-4737-9751-95dbf5dc8715
+
+# Draft -> cms/<collection>/<file> branch + pull request -> (Cloudflare preview) -> Publish merges it.
+publish_mode: editorial_workflow
+
+# Only NEW uploads go here. Existing files under assets/images/ stay where they are.
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+collections:
+  - name: projects
+    label: Projects
+    files:
+      - name: work
+        label: Projects
+        file: assets/data/work.json
+        fields:
+          - label: Projects
+            name: projects
+            widget: list
+            label_singular: Project
+            summary: "{{fields.title}}"
+            fields:
+              - { label: ID, name: id, widget: string, hint: "Internal identifier (not shown on the site). Keep it unique; don't change it for existing projects." }
+              - { label: Title, name: title, widget: string }
+              - { label: Description, name: description, widget: text }
+              - { label: Category tag, name: category, widget: string, hint: "Tag shown on the card image, e.g. `WordPress · Web Dev`." }
+              - { label: Badge, name: badge, widget: string, required: false, hint: "Optional second tag, e.g. `Coming Soon` or `In Development`. Leave empty for none." }
+              - { label: Link, name: link, widget: string, required: false, hint: "Target URL of the card. Leave empty for a disabled card." }
+              - { label: Link label, name: linkLabel, widget: string, hint: "Text at the bottom of the card, e.g. `View site →`." }
+              - { label: Disabled, name: disabled, widget: boolean, default: false, hint: "On = card is not clickable and the link label is shown as plain status text (used for `Coming soon`)." }
+              - label: Media
+                name: media
+                widget: object
+                hint: "**Type `image`:** fill in Image + Alt text. **Type `mock`:** fill in Mock key only (CSS placeholder card). The fields of the other type are not used."
+                fields:
+                  - { label: Type, name: type, widget: select, options: ["image", "mock"] }
+                  - { label: Image, name: src, widget: image, required: false }
+                  - { label: Alt text, name: alt, widget: string, required: false }
+                  - { label: Mock key, name: mock, widget: select, options: ["duedate", "nachbar", "legion"], required: false }
+
+  - name: clients
+    label: Clients
+    files:
+      - name: clients
+        label: Clients
+        file: assets/data/clients.json
+        fields:
+          - label: Clients
+            name: clients
+            widget: list
+            label_singular: Client
+            summary: "{{fields.name}}"
+            fields:
+              - { label: ID, name: id, widget: string, hint: "Internal identifier (not shown on the site). Keep it unique." }
+              - { label: Name, name: name, widget: string }
+              - { label: Logo, name: logo, widget: image }
+              - { label: Link, name: link, widget: string }
+
+  - name: photography
+    label: Photography
+    files:
+      - name: photography
+        label: Photography
+        file: assets/data/photography.json
+        fields:
+          - label: Photos
+            name: photos
+            widget: list
+            label_singular: Photo
+            summary: "{{fields.id}}"
+            hint: "**The order of this list is the display order — for the photo grid AND the 3D showroom.** In the grid, photo 1 is shown large and photo 6 wide (set by the site's CSS), so moving photos around changes which photos get those slots. New photos are added at the bottom."
+            fields:
+              - { label: ID, name: id, widget: string, hint: "Internal identifier (not shown on the site). Keep it unique." }
+              - { label: Image, name: src, widget: image }
+              - { label: Alt text, name: alt, widget: string }
