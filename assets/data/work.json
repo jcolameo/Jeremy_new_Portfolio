@@ -86,17 +86,6 @@
       "disabled": false,
       "description": "An interaction design concept exploring a guided, path-based navigation experience.",
       "category": "Interaction Design · Figma"
-    },
-    {
-      "disabled": false,
-      "id": "test",
-      "title": "test",
-      "description": "bbjbjhbjhbjh",
-      "category": "test",
-      "linkLabel": "test",
-      "media": {
-        "type": "mock"
-      }
     }
   ]
 }
