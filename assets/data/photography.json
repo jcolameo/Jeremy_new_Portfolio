@@ -1,0 +1,12 @@
+{
+  "photos": [
+    { "id": "ig-02-aug25", "src": "assets/images/photography/ig-02-aug25.jpg", "alt": "Photography by Jeremy Colameo" },
+    { "id": "ig-06-2023", "src": "assets/images/photography/ig-06-2023.jpg", "alt": "Photography by Jeremy Colameo" },
+    { "id": "ig-07-oct25", "src": "assets/images/photography/ig-07-oct25.jpg", "alt": "Photography by Jeremy Colameo" },
+    { "id": "ig-03-sep25", "src": "assets/images/photography/ig-03-sep25.jpg", "alt": "Photography by Jeremy Colameo" },
+    { "id": "ig-08-2019", "src": "assets/images/photography/ig-08-2019.jpg", "alt": "Photography by Jeremy Colameo" },
+    { "id": "ig-04-aug25", "src": "assets/images/photography/ig-04-aug25.jpg", "alt": "Photography by Jeremy Colameo" },
+    { "id": "ig-01-oct25", "src": "assets/images/photography/ig-01-oct25.jpg", "alt": "Photography by Jeremy Colameo" },
+    { "id": "ig-05-2020", "src": "assets/images/photography/ig-05-2020.jpg", "alt": "Photography by Jeremy Colameo" }
+  ]
+}

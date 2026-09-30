@@ -1,0 +1,16 @@
+{
+  "clients": [
+    {
+      "id": "bleugym",
+      "name": "Bleu Gym",
+      "logo": "assets/images/projects/bleugym-logo.webp",
+      "link": "https://www.bleugym.ch/"
+    },
+    {
+      "id": "arcware",
+      "name": "Arcware GmbH",
+      "logo": "assets/images/projects/arcware-logo.svg",
+      "link": "https://arcware.io"
+    }
+  ]
+}

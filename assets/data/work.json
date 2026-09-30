@@ -1,0 +1,70 @@
+{
+  "projects": [
+    {
+      "id": "arcware",
+      "title": "Arcware — 3D Site Experience",
+      "description": "A Three.js & GSAP prototype for arcware.io: a scroll-driven 3D scene with an interactive rotating logo and service cards.",
+      "category": "3D Web · Three.js",
+      "badge": "Coming Soon",
+      "link": null,
+      "linkLabel": "Coming soon",
+      "disabled": true,
+      "media": { "type": "image", "src": "assets/images/projects/arcware-thumb.png", "alt": "Arcware 3D redesign prototype" }
+    },
+    {
+      "id": "bleugym",
+      "title": "Bleu Gym — Homepage Redesign",
+      "description": "Modernized the homepage for this Baden-based kickboxing & boxing gym — my first paying client.",
+      "category": "Web Redesign · Client Work",
+      "badge": null,
+      "link": "https://www.bleugym.ch/",
+      "linkLabel": "View site →",
+      "disabled": false,
+      "media": { "type": "image", "src": "assets/images/projects/bleugym-hero.jpg", "alt": "Bleu Gym website" }
+    },
+    {
+      "id": "mcwindisch",
+      "title": "McWindisch — Campaign Site",
+      "description": "A custom WordPress build with a playful, illustrated hero and campaign-driven storytelling.",
+      "category": "WordPress · Web Dev",
+      "badge": null,
+      "link": "https://devwp.mcwindisch-nein.ch/",
+      "linkLabel": "View site →",
+      "disabled": false,
+      "media": { "type": "image", "src": "assets/images/projects/mcwindisch-hero.png", "alt": "McWindisch website" }
+    },
+    {
+      "id": "duedate",
+      "title": "DueDate — Life OS",
+      "description": "A local-first Vue app that turns messy CSV exports into calendar deadlines — the first module of a personal, friction-free operating system.",
+      "category": "Product Design · Vue",
+      "badge": "In Development",
+      "link": "https://jcolameo.github.io/duedate/#/deadlines",
+      "linkLabel": "View live app →",
+      "disabled": false,
+      "media": { "type": "mock", "mock": "duedate" }
+    },
+    {
+      "id": "nachbarschaftstool",
+      "title": "Nachbarschaftstool",
+      "description": "A UI/UX concept for a neighborhood community platform — full screen flows from onboarding to registration.",
+      "category": "UI/UX · Figma",
+      "badge": null,
+      "link": "https://www.figma.com/design/gGUfQl53DbYqNx3E6RdUUf/Nachbarsschaftstool?node-id=171-6",
+      "linkLabel": "View on Figma →",
+      "disabled": false,
+      "media": { "type": "mock", "mock": "nachbar" }
+    },
+    {
+      "id": "legionarspfad",
+      "title": "Legionärspfad",
+      "description": "An interaction design concept exploring a guided, path-based navigation experience.",
+      "category": "Interaction Design · Figma",
+      "badge": null,
+      "link": "https://www.figma.com/design/pgaW1b91CYoXsIg8T1rkfw/Legion%C3%A4rspfad?node-id=0-1",
+      "linkLabel": "View on Figma →",
+      "disabled": false,
+      "media": { "type": "mock", "mock": "legion" }
+    }
+  ]
+}

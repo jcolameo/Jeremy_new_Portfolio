@@ -403,20 +403,27 @@ gsap.registerPlugin(ScrollTrigger);
     step();
 })();
 
-/* ============ SCROLL REVEALS ============ */
-gsap.utils.toArray('.reveal').forEach((el, i) => {
-    gsap.to(el, {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: 'power2.out',
-        scrollTrigger: {
-            trigger: el,
-            start: 'top 88%'
-        },
-        delay: (i % 4) * 0.05
+/* ============ SCROLL REVEALS ============
+   Exposed as window.registerReveals so content.js can register the same
+   fade-in for elements it renders from data after this script has already
+   run its initial pass over the static markup. */
+function registerReveals(elements) {
+    Array.from(elements).forEach((el, i) => {
+        gsap.to(el, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: el,
+                start: 'top 88%'
+            },
+            delay: (i % 4) * 0.05
+        });
     });
-});
+}
+window.registerReveals = registerReveals;
+registerReveals(document.querySelectorAll('.reveal'));
 
 /* ============ MOBILE NAV ============ */
 const navToggle = document.getElementById('nav-toggle');
@@ -432,8 +439,13 @@ mobileMenu.querySelectorAll('a').forEach(a => {
 /* ============ PHOTO SHOWROOM — a three.js coverflow carousel ============
    Photos as textured 3D cards fanned out in depth; the active one faces the
    camera dead-on, the rest recede and turn away. Prev/next buttons, clicking
-   a side card, arrow keys and Escape all drive it. */
-(function initShowroom() {
+   a side card, arrow keys and Escape all drive it.
+
+   Exposed as window.initPhotoShowroom(photos) instead of auto-running: the
+   photo grid is now rendered by content.js from assets/data/photography.json,
+   so this waits to be called with that same data once the grid exists in the
+   DOM, instead of scanning for it itself. Nothing else in here changed. */
+function initPhotoShowroom(photos) {
     const overlay = document.getElementById('showroom');
     const canvasContainer = document.getElementById('showroom-canvas');
     const counterEl = document.getElementById('showroom-counter');
@@ -442,7 +454,7 @@ mobileMenu.querySelectorAll('a').forEach(a => {
     const nextBtn = document.getElementById('showroom-next');
 
     const photoButtons = Array.from(document.querySelectorAll('.photo-item'));
-    const photoUrls = photoButtons.map(btn => btn.dataset.full);
+    const photoUrls = photos.map(p => p.src);
     if (!photoButtons.length) return;
 
     const CARD_W = 2.1, CARD_H = 2.6;
@@ -576,4 +588,5 @@ mobileMenu.querySelectorAll('a').forEach(a => {
         if (e.key === 'ArrowRight') next();
         if (e.key === 'ArrowLeft') prev();
     });
-})();
+}
+window.initPhotoShowroom = initPhotoShowroom;
