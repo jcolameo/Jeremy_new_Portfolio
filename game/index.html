@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Das Geburtstagsabenteuer</title>
+  <meta name="description" content="Ein kleines Text-Adventure zum Geburtstag – finde dein Haustier wieder." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎁</text></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="title-screen" class="title-screen">
+    <div class="title-bg" aria-hidden="true"></div>
+    <div class="title-content">
+      <div class="title-emoji">🎂</div>
+      <h1 class="title-heading">Das Geburtstagsabenteuer</h1>
+      <p class="title-tagline">Ein kleines Text-Adventure zum Geburtstag – finde dein Haustier wieder... falls du überlebst.</p>
+      <button id="title-start" class="title-start-btn" type="button">▶ Spiel starten</button>
+      <p id="title-returning" class="title-returning" hidden></p>
+      <button id="title-help" class="title-help-link" type="button">❓ Wie spielt man?</button>
+    </div>
+  </div>
+
+  <div class="app">
+    <header class="topbar">
+      <span class="title">Das Geburtstagsabenteuer</span>
+      <div class="topbar-right">
+        <button id="ending-progress" class="ending-progress" type="button" title="Enden-Galerie öffnen"></button>
+        <span id="minigame-progress" class="ending-progress minigame-progress-badge" title=""></span>
+        <button id="help-btn" class="restart icon-btn" type="button" title="Hilfe">❓</button>
+        <button id="restart" class="restart" type="button" title="Neu starten">↺ Neu starten</button>
+      </div>
+    </header>
+
+    <main id="scene" class="scene">
+      <div id="scene-bg" class="scene-bg" aria-hidden="true"></div>
+      <div id="flash" class="flash" aria-hidden="true"></div>
+      <div id="confetti" class="confetti-layer" aria-hidden="true"></div>
+      <div id="card" class="card">
+        <span id="ending-badge" class="ending-badge" hidden></span>
+        <p id="scene-text" class="scene-text"></p>
+        <div id="choices" class="choices"></div>
+      </div>
+    </main>
+
+    <footer class="foothint">Tipp: Zahlentasten 1–2 wählen schnell eine Option</footer>
+  </div>
+
+  <div id="toast" class="toast-layer" aria-live="polite"></div>
+
+  <div id="gallery" class="gallery-overlay" hidden>
+    <div class="gallery-modal">
+      <div class="gallery-header">
+        <h2>Enden-Galerie</h2>
+        <button id="gallery-close" class="gallery-close" type="button" aria-label="Schliessen">✕</button>
+      </div>
+      <div id="gallery-grid" class="gallery-grid"></div>
+    </div>
+  </div>
+
+  <div id="minigame" class="minigame-overlay" hidden>
+    <div class="minigame-modal">
+      <div class="gallery-header">
+        <h2 id="minigame-title"></h2>
+        <button id="minigame-close" class="gallery-close" type="button" aria-label="Abbrechen">✕</button>
+      </div>
+      <p id="minigame-instructions" class="minigame-instructions"></p>
+      <div id="minigame-stage" class="minigame-stage"></div>
+      <p id="minigame-feedback" class="minigame-feedback"></p>
+      <button id="minigame-skip" class="minigame-skip" type="button" hidden>Trotzdem weiter →</button>
+    </div>
+  </div>
+
+  <div id="help" class="gallery-overlay" hidden>
+    <div class="gallery-modal">
+      <div class="gallery-header">
+        <h2>Wie spielt man?</h2>
+        <button id="help-close" class="gallery-close" type="button" aria-label="Schliessen">✕</button>
+      </div>
+      <ul class="help-list">
+        <li>🖱️ Auf eine Option klicken, um fortzufahren.</li>
+        <li>⌨️ Zahlentasten (1, 2, …) wählen eine Option direkt aus.</li>
+        <li>🎮 Optionen mit diesem Symbol brauchen erst ein kleines Minispiel.</li>
+        <li>🏆 Sammle alle 6 Enden – Fortschritt oben links in der Galerie.</li>
+        <li>⎋ Escape schliesst geöffnete Fenster.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>

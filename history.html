@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Bit of History — Jeremy Colameo</title>
+    <meta name="description" content="Before this portfolio, there was colameo.ch — and a very rough little birthday game. A short archive before both go offline.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css?v=7">
+    <script>
+        (function () {
+            function setVars() {
+                document.documentElement.style.setProperty('--vw', document.documentElement.clientWidth + 'px');
+                document.documentElement.style.setProperty('--vh', document.documentElement.clientHeight + 'px');
+            }
+            setVars();
+            window.addEventListener('resize', setVars);
+        })();
+    </script>
+</head>
+
+<body>
+    <canvas id="bg-particles"></canvas>
+
+    <!-- NAV -->
+    <header class="nav">
+        <a href="index.html" class="nav-logo">JC<span class="dot">.</span></a>
+        <a href="index.html" class="nav-back">← Back to portfolio</a>
+    </header>
+
+    <!-- HISTORY HERO -->
+    <section class="history-hero">
+        <p class="eyebrow reveal">History</p>
+        <h1 class="reveal">Before this site, <span class="text-outline">there was this.</span></h1>
+        <p class="hero-sub reveal">
+            I'm about to replace my old personal site for good, so before it disappears — a quick
+            archive of where this all started: a WordPress page turned hand-coded homepage, and a
+            very rough little birthday game I've since rebuilt from scratch.
+        </p>
+    </section>
+
+    <!-- OLD SITE -->
+    <section class="history-block">
+        <p class="section-tag reveal">colameo.ch · 2018 – 2026</p>
+        <h2 class="reveal">My first real homepage</h2>
+
+        <div class="history-grid reveal">
+            <div class="history-photo">
+                <img src="assets/images/history/old-site-me.jpg" alt="Hero photo from the old colameo.ch homepage">
+            </div>
+            <div class="history-copy">
+                <p>Started on WordPress in July 2015, way too limited creatively for what I wanted.
+                    So in winter 2018 I rebuilt it myself with HTML, CSS and JavaScript — my first
+                    real hand-coded homepage, and the thing that got me hooked on web development
+                    in the first place.</p>
+                <p>It's plain, a little dated, and very much a snapshot of where I was at the time —
+                    which is exactly why it's worth keeping around, even just as an archive.</p>
+                <a class="btn btn-ghost" href="old-site/index.html" target="_blank" rel="noopener">Browse the archived site →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- GAME -->
+    <section class="history-block">
+        <p class="section-tag reveal">The Birthday Game · then &amp; now</p>
+        <h2 class="reveal">A very old game, rebuilt with AI</h2>
+        <p class="history-intro reveal">
+            Years ago I built a tiny choose-your-own-adventure as a birthday gift — plain HTML pages,
+            barely any styling, pure early-web charm. Recently I rebuilt the whole thing from scratch
+            with AI-assisted "vibe coding": same story, same choices, a completely different experience.
+        </p>
+
+        <div class="compare-grid reveal">
+            <div class="compare-card compare-old">
+                <span class="compare-label">2019 · original</span>
+                <p class="compare-old-text">Herzlichen Glückwunsch zu deinem Geburtstag! Du kannst
+                    einen Gutschein von einem Laden deiner Wahl auswählen.</p>
+                <div class="compare-old-choices">
+                    <span>Tierheim</span>
+                    <span>Juwelierladen</span>
+                </div>
+            </div>
+
+            <div class="compare-card compare-new">
+                <span class="compare-label">2026 · remake</span>
+                <div class="compare-new-emoji">🎂</div>
+                <p class="compare-new-title">Das Geburtstagsabenteuer</p>
+                <p class="compare-new-text">Full title screen, real photos for every choice, six
+                    endings to collect, and a couple of small minigames along the way.</p>
+            </div>
+        </div>
+
+        <a class="btn btn-primary reveal" href="game/index.html" target="_blank" rel="noopener">Play the 2026 remake →</a>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <a href="index.html" class="nav-logo">JC<span class="dot">.</span></a>
+            <p>© 2026 Jeremy Colameo.</p>
+            <div class="footer-links">
+                <a href="index.html">Portfolio</a>
+                <a href="game/index.html" target="_blank" rel="noopener">Game</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/history.js"></script>
+</body>
+
+</html>

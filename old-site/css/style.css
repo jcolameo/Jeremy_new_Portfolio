@@ -1,0 +1,337 @@
+.body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+p {
+    color:rgb(117, 117, 117);
+}
+
+.h1{
+    margin-top: 0%;
+    background-color: white;
+    line-height: 5;
+     letter-spacing: -.1rem;
+}
+
+.announcment{
+    font-size: 4.0rem; 
+     line-height: 5;
+     letter-spacing: -.1rem;
+}
+
+/**
+* Header-bereich
+*/
+
+.header {
+    height:600px;
+    background-size:cover;
+    background-position:50% 10%;
+    
+}
+
+.container-slogan{
+    position: absolute;
+
+}
+
+.carousel-container {
+    width: 700;
+    margin: auto;
+    background-size: cover;
+    overflow: hidden; 
+}
+
+.carousel-slide{
+    display: flex;
+    width: 700;
+    height: 525;
+    position: relative;
+    background-size: cover;
+    background-position:50% 10%;
+}
+
+#prevBtn{
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    left: 5%;
+    font-size: 30px;
+    color: grey;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+#nextBtn{
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    right: 5%;
+    font-size: 30px;
+    color: grey;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+
+
+.header2 {
+    position: absolute;
+    height:525px;
+    background-image:url("../Fotos/The_PingPong_Project/pingpong_moon.jpg");
+    background-size:cover;
+    background-position:90% 50%;
+}
+
+.header-navbar-links {
+    color:black;
+    float:right;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 50px;
+    text-decoration: none;
+}
+
+.header-navbar-links a {
+    color:black;
+    float:right;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
+}
+
+.header-navbar-links li {
+    float:left;
+    list-style-type: none;
+    margin-left: 27px;
+    text-decoration: none;
+}
+
+.header-brand-wrapper {
+    position: absolute;
+    margin-top: 50px;
+    float: left;
+}
+
+.header-brand {
+    color:black;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 150%;
+    display: block;
+    margin-top: -2%;
+}
+
+/*
+.text{
+    margin:20px;
+    width: 100%;
+    position: relative;
+    top: 100%;
+    left: 50%;
+    transform: translate(-60%, -40%);
+}
+*/
+
+.caption center-alignx{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.slogan {
+    position: absolute;
+    padding-top: 0px;
+    color:black;
+    text-align: center;
+    text-shadow: 0px 0px 3px;
+}
+
+.slogan2 {
+    position: absolute;
+    padding-top: 170px;
+    color:black;
+    text-align: center;
+    text-shadow: 0px 0px 3px;
+}
+
+.slogan-top {
+    position: absolute;
+    font-size: 170%;
+    font-weight: lighter;
+    padding-top: 170px;
+    color:black;
+    text-align: center;
+    text-shadow: 0px 0px 3px;
+}
+
+.slogan-buttom {
+    position: absolute;
+    font-size:200%;
+    font-weight:bold;
+    color: black;
+    padding: center;
+    text-shadow: grey;
+}
+
+/*
+.slogan-button {
+    position: absolute;
+    color:black;
+    text-shadow: grey;
+}
+*/
+
+.slogan-button3 {
+    font-family: sans-serif;
+    text-size-adjust: 80px;
+    color:black;
+    text-shadow: grey;
+    width:318px;
+    height:310px;
+    background: size 100%;
+    background-image:url("../Fotos/random_photos/4141be4d-9701-4198-9683-08f9637bf14e.jpg");
+    background-size:cover;
+    text-decoration-color: none;
+}
+
+.a{
+    position: absolute;
+    font-family: sans-serif;
+    text-size-adjust: 80px;
+    color:white;
+    text-shadow: black;
+    width:318px;
+    height:310px;
+    text-decoration-line: none;
+    text-decoration-color: none;
+}
+.slogan-button2 {
+    color:black;
+    text-shadow: grey;
+    height:310px;
+    width:350px;
+    background: size 100%;
+    background-image:url("../Fotos/random_photos/manstandingwindow.jpg");
+    background-size:cover;
+}
+
+.slogan-button4 {
+    color:black;
+    text-shadow: grey;
+    height:310px;
+    width:350px;
+    background: size 100%;
+    background-image:url("https://colameo.ch/Fotos/random_photos/html.jpeg");
+    background-size:cover;
+}
+
+.slogan-button:hover {
+    position: absolute;
+    color:black;
+    text-shadow: grey;
+}
+
+/**
+* Service-Bereich
+*/
+
+.services {
+    padding-top: 100px;
+    padding-bottom: 75px;
+}
+.body-image {
+    height:625px;
+    background-image:url("../Fotos/random_photos/movieteam.jpg");
+    background-size:cover;
+    background-position:50% 50%;
+}
+
+.body-htmlimage {
+    height:500px;
+    background-image:url("https://colameo.ch/Fotos/random_photos/html.jpeg");
+    background-size:cover;
+    background-position:50% 50%;
+}
+
+.service-gray {
+    background-color: rgb(245, 245, 245)
+}
+
+.service-title {
+    font-weight: lighter;
+    color: rgb(30, 30, 30)
+}
+
+.icon{
+    color: rgb(224, 224, 224);
+    font-size:1250%;
+    text-align: center;
+    margin-top:-10%;
+    margin-bottom:-30%;
+}
+
+.icon2{
+    color: rgb(224, 224, 224);
+    font-size:1250%;
+    text-align: center;
+    margin-top:-10%;
+    margin-bottom:30%;
+}
+
+/*
+* Feature-Bereich
+*/
+
+.features{
+    padding-top: 100px;
+    padding-bottom: 85px;
+}
+
+.feature-icon{
+    width: 70px;
+    height: 60px;
+    padding-top:14px;
+    background-color: rgb(30, 30, 30);
+    border-radius: 35px;
+    color:white;
+    text-align:center;
+    font-size: 35px;
+    float:left;
+}
+
+.feature-text{
+    margin-left: 90px;
+}
+
+.feature-text h5{
+    margin-bottom: 10px;
+    font-size: 150%;
+    color:rgb(30, 30, 30);
+}
+
+/**
+*Clients
+*/
+
+.clients {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: rgb(245, 245, 245)
+}
+
+.clients-heading{
+    font-weight: lighter;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+.clients-subheading{
+    text-align: center;
+}
+
+.client-img{
+    border: 5px solid rgb(255, 255, 255);
+    border-radius: 100000px;
+    width:100%
+}

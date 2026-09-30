@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors / tools
+.vscode/
+.idea/
+.claude/
+
+# Logs
+*.log
+
+# Env / secrets (none expected in this static site, kept as a safety net)
+.env
+.env.*
+*.pem
+*.key

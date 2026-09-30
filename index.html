@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeremy Colameo — Design, Development & Photography</title>
+    <meta name="description" content="Freelance UI/UX design, web development and photography by Jeremy Colameo. Based in Switzerland.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <link rel="stylesheet" href="assets/css/style.css?v=10">
+    <script>
+        // Some mobile browsers resolve a plain position:fixed element's own
+        // width/height against a stale or incorrect viewport reference
+        // (window.innerWidth drifts with it too). documentElement.clientWidth/
+        // clientHeight stays correct, so every fixed full-viewport element in
+        // the CSS reads --vw/--vh instead of 100%/100vw/100vh.
+        (function () {
+            function setVars() {
+                document.documentElement.style.setProperty('--vw', document.documentElement.clientWidth + 'px');
+                document.documentElement.style.setProperty('--vh', document.documentElement.clientHeight + 'px');
+            }
+            setVars();
+            window.addEventListener('resize', setVars);
+        })();
+    </script>
+</head>
+
+<body>
+    <canvas id="bg-particles"></canvas>
+    <div id="hero-canvas"></div>
+
+    <!-- NAV -->
+    <header class="nav">
+        <a href="#top" class="nav-logo">JC<span class="dot">.</span></a>
+        <nav class="nav-links">
+            <a href="#about">About</a>
+            <a href="#work">Work</a>
+            <a href="#services">Services</a>
+            <a href="#experience">Experience</a>
+            <a href="#photography">Photography</a>
+            <a href="game/index.html" target="_blank" rel="noopener">Game</a>
+            <a href="#contact" class="nav-cta">Get in touch</a>
+        </nav>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#experience">Experience</a>
+        <a href="#photography">Photography</a>
+        <a href="game/index.html" target="_blank" rel="noopener">Game</a>
+        <a href="#contact">Get in touch</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+        <div class="hero-viewport">
+            <div class="venn-labels">
+                <div class="venn-center-name">
+                    <p class="mobile-focus-skill" id="mobile-focus-skill" aria-hidden="true">Design</p>
+                    <h1 class="reveal">Jeremy Colameo</h1>
+                    <div class="mobile-focus-subskills" id="mobile-focus-subskills" aria-hidden="true"></div>
+                </div>
+            </div>
+            <div class="hero-inner">
+                <div class="hero-actions reveal">
+                    <a href="#work" class="btn btn-primary">See my work</a>
+                    <a href="#contact" class="btn btn-ghost">Start a project</a>
+                </div>
+            </div>
+            <div class="scroll-cue">
+                <span></span>
+                <p>Scroll</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="about-inner">
+            <p class="section-tag reveal">About Me</p>
+            <h2 class="reveal">Designing, coding &amp; capturing moments.</h2>
+
+            <div class="about-grid">
+                <div class="about-portrait reveal">
+                    <img src="assets/images/profile/jeremy-portrait.jpg" alt="Jeremy Colameo">
+                </div>
+                <div class="about-copy">
+                    <p class="about-text reveal">
+                        I move between disciplines on purpose — a UI screen, the code that
+                        makes it work, and a photo that tells a story are all the same
+                        problem to me: paying attention to what actually matters, then
+                        cutting the rest. I work fast, ship real things, and use AI-assisted
+                        "vibe coding" workflows to get from idea to working prototype in days,
+                        not months.
+                    </p>
+                    <p class="about-text reveal">
+                        Off-screen I'm usually at the gym or boxing, out walking the dog,
+                        losing slowly at chess, editing a video, or grinding Duolingo Spanish.
+                        Grew up in Switzerland, Italian roots — I like things precise and I
+                        like them to look good.
+                    </p>
+                    <div class="hobby-tags reveal">
+                        <span>Boxing &amp; Gym</span>
+                        <span>Photography</span>
+                        <span>Video Editing</span>
+                        <span>Chess</span>
+                        <span>Learning Spanish</span>
+                        <span>Dog Walks</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="facts reveal">
+                <div class="fact">
+                    <span class="fact-num">7</span>
+                    <span class="fact-label">Services offered</span>
+                </div>
+                <div class="fact">
+                    <span class="fact-num">CH</span>
+                    <span class="fact-label">Based in Switzerland</span>
+                </div>
+                <div class="fact">
+                    <span class="fact-num">∞</span>
+                    <span class="fact-label">Figma tabs open</span>
+                </div>
+                <div class="fact">
+                    <span class="fact-num">Open</span>
+                    <span class="fact-label">For freelance work</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <p class="section-tag reveal">Services</p>
+        <h2 class="reveal">What I can build for you</h2>
+
+        <div class="services-grid services-grid-4">
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg>
+                </div>
+                <h3>Interaction Design</h3>
+                <p class="service-note">Currently deepening this formally — HF Interaction Design, Bern</p>
+                <ul class="service-list">
+                    <li>UX strategy, user flows &amp; information architecture</li>
+                    <li>Wireframing &amp; interactive prototyping (Figma)</li>
+                    <li>UI design &amp; design systems, from scratch or redesigns</li>
+                    <li>Micro-interactions, motion &amp; usability testing</li>
+                </ul>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m8 6-6 6 6 6"/><path d="m16 6 6 6-6 6"/></svg>
+                </div>
+                <h3>Web Development</h3>
+                <ul class="service-list">
+                    <li>Responsive, performant front-ends</li>
+                    <li>Interactive, three.js-powered experiences</li>
+                    <li>WordPress builds &amp; redesigns, start to launch</li>
+                    <li>Modernizing dated or clunky sites</li>
+                </ul>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3"/><path d="M13 15h4"/></svg>
+                </div>
+                <h3>Software Development</h3>
+                <ul class="service-list">
+                    <li>Small tools, internal apps &amp; automation</li>
+                    <li>Java, Python, SQL &amp; API integrations</li>
+                    <li>Rapid, AI-assisted prototyping ("vibe coding")</li>
+                    <li>From rough idea to working, clickable build</li>
+                </ul>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 8h3l2-2h6l2 2h3v11H4Z"/><circle cx="12" cy="13" r="3.4"/></svg>
+                </div>
+                <h3>Photography</h3>
+                <ul class="service-list">
+                    <li>Street, travel &amp; moment-driven photography</li>
+                    <li>Editing &amp; color grading (Lightroom)</li>
+                    <li>Photo + video content for brands &amp; campaigns</li>
+                    <li>The same eye for framing I bring into UI</li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="tool-strip reveal">Figma · WordPress · Three.js / WebGL · Java &amp; Python · Git · Scrum/Kanban · DaVinci Resolve · Lightroom</p>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="experience" id="experience">
+        <p class="section-tag reveal">Background</p>
+        <h2 class="reveal">Education &amp; experience</h2>
+
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <span class="timeline-date">2019 – 2023</span>
+                <div class="timeline-body">
+                    <h3>IT Apprenticeship (EFZ), Application Development</h3>
+                    <p class="timeline-org">Benedict Schule, Altstetten</p>
+                    <p>Four-year Swiss vocational apprenticeship specializing in application
+                        development — Java, SQL and object-oriented programming fundamentals.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <span class="timeline-date">2021 – 2023</span>
+                <div class="timeline-body">
+                    <h3>Application Development Internship</h3>
+                    <p class="timeline-org">Medelexis AG, Dättwil</p>
+                    <p>Built features for Elexis, medical practice software used by doctors —
+                        Twilio SMS integration, XSLT-based invoice personalization, and SQL
+                        reporting used for national health statistics (BAG).</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <span class="timeline-date">2023 – 2025</span>
+                <div class="timeline-body">
+                    <h3>Multimedia Software Developer</h3>
+                    <p class="timeline-org">MPS Europa AG, Baar</p>
+                    <p>Migrated and rebuilt a military training simulation on WebGL
+                        (PlayCanvas) from the ground up — missions, menus, UI components
+                        and interactive web-based trainings.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <span class="timeline-date">2025</span>
+                <div class="timeline-body">
+                    <h3>C1 English Certificate</h3>
+                    <p class="timeline-org">EF Education First, San Diego</p>
+                    <p>One-month language immersion in California.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <span class="timeline-date">2025 – 2028</span>
+                <div class="timeline-body">
+                    <h3>Certified Communication Designer (HF), Interaction Design <span class="badge">Ongoing</span></h3>
+                    <p class="timeline-org">SfGB&amp;B, Bern</p>
+                    <p>Part-time HF degree deepening UX research, prototyping and
+                        interaction theory alongside client work.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <span class="timeline-date">2026 – present</span>
+                <div class="timeline-body">
+                    <h3>Freelance User Tester <span class="badge">Ongoing</span></h3>
+                    <p class="timeline-org">TestingTime</p>
+                    <p>Running usability-testing sessions for companies including Migros,
+                        Sanitas and Ricardo — structured user feedback and UX issue
+                        identification.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="work" id="work">
+        <p class="section-tag reveal">Selected Work</p>
+        <h2 class="reveal">A few things I've built</h2>
+
+        <div class="work-grid">
+            <div class="work-card work-card-disabled reveal">
+                <div class="work-media">
+                    <img src="assets/images/projects/arcware-thumb.png" alt="Arcware 3D redesign prototype">
+                    <span class="work-media-tag">3D Web · Three.js</span>
+                    <span class="work-media-tag work-media-tag-soon">Coming Soon</span>
+                </div>
+                <div class="work-body">
+                    <h3>Arcware — 3D Site Experience</h3>
+                    <p>A Three.js &amp; GSAP prototype for arcware.io: a scroll-driven
+                        3D scene with an interactive rotating logo and service cards.</p>
+                    <span class="work-link work-link-disabled">Coming soon</span>
+                </div>
+            </div>
+
+            <a class="work-card reveal" href="https://www.bleugym.ch/" target="_blank" rel="noopener">
+                <div class="work-media">
+                    <img src="assets/images/projects/bleugym-hero.jpg" alt="Bleu Gym website">
+                    <span class="work-media-tag">Web Redesign · Client Work</span>
+                </div>
+                <div class="work-body">
+                    <h3>Bleu Gym — Homepage Redesign</h3>
+                    <p>Modernized the homepage for this Baden-based kickboxing &amp;
+                        boxing gym — my first paying client.</p>
+                    <span class="work-link">View site →</span>
+                </div>
+            </a>
+
+            <a class="work-card reveal" href="https://devwp.mcwindisch-nein.ch/" target="_blank" rel="noopener">
+                <div class="work-media">
+                    <img src="assets/images/projects/mcwindisch-hero.png" alt="McWindisch website">
+                    <span class="work-media-tag">WordPress · Web Dev</span>
+                </div>
+                <div class="work-body">
+                    <h3>McWindisch — Campaign Site</h3>
+                    <p>A custom WordPress build with a playful, illustrated hero and
+                        campaign-driven storytelling.</p>
+                    <span class="work-link">View site →</span>
+                </div>
+            </a>
+
+            <a class="work-card reveal" href="https://jcolameo.github.io/duedate/#/deadlines" target="_blank" rel="noopener">
+                <div class="work-media work-media-mock" data-mock="duedate">
+                    <span class="work-media-tag">Product Design · Vue</span>
+                    <span class="work-media-tag work-media-tag-soon">In Development</span>
+                </div>
+                <div class="work-body">
+                    <h3>DueDate — Life OS</h3>
+                    <p>A local-first Vue app that turns messy CSV exports into
+                        calendar deadlines — the first module of a personal,
+                        friction-free operating system.</p>
+                    <span class="work-link">View live app →</span>
+                </div>
+            </a>
+
+            <a class="work-card reveal" href="https://www.figma.com/design/gGUfQl53DbYqNx3E6RdUUf/Nachbarsschaftstool?node-id=171-6" target="_blank" rel="noopener">
+                <div class="work-media work-media-mock" data-mock="nachbar">
+                    <span class="work-media-tag">UI/UX · Figma</span>
+                </div>
+                <div class="work-body">
+                    <h3>Nachbarschaftstool</h3>
+                    <p>A UI/UX concept for a neighborhood community platform —
+                        full screen flows from onboarding to registration.</p>
+                    <span class="work-link">View on Figma →</span>
+                </div>
+            </a>
+
+            <a class="work-card reveal" href="https://www.figma.com/design/pgaW1b91CYoXsIg8T1rkfw/Legion%C3%A4rspfad?node-id=0-1" target="_blank" rel="noopener">
+                <div class="work-media work-media-mock" data-mock="legion">
+                    <span class="work-media-tag">Interaction Design · Figma</span>
+                </div>
+                <div class="work-body">
+                    <h3>Legionärspfad</h3>
+                    <p>An interaction design concept exploring a guided,
+                        path-based navigation experience.</p>
+                    <span class="work-link">View on Figma →</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- CLIENTS -->
+    <section class="clients">
+        <p class="section-tag reveal">Clients</p>
+        <h2 class="reveal">I've worked with these clients</h2>
+
+        <div class="clients-row reveal">
+            <a class="client-chip" href="https://www.bleugym.ch/" target="_blank" rel="noopener">
+                <span class="client-chip-logo"><img src="assets/images/projects/bleugym-logo.webp" alt="Bleu Gym logo"></span>
+                <span>Bleu Gym</span>
+            </a>
+            <a class="client-chip" href="https://arcware.io" target="_blank" rel="noopener">
+                <span class="client-chip-logo"><img src="assets/images/projects/arcware-logo.svg" alt="Arcware logo"></span>
+                <span>Arcware GmbH</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- PHOTOGRAPHY -->
+    <section class="photography" id="photography">
+        <p class="section-tag reveal">Photography</p>
+        <h2 class="reveal">Sometimes stuck in the Figma tunnel, mostly out and about.</h2>
+        <p class="photo-sub reveal">A few frames from
+            <a href="https://www.instagram.com/jeremy.creats.things/" target="_blank" rel="noopener">@jeremy.creats.things</a>.
+        </p>
+
+        <div class="photo-grid" id="photo-grid">
+            <button class="photo-item" data-full="assets/images/photography/ig-02-aug25.jpg"><img src="assets/images/photography/ig-02-aug25.jpg" alt="Photography by Jeremy Colameo"></button>
+            <button class="photo-item" data-full="assets/images/photography/ig-06-2023.jpg"><img src="assets/images/photography/ig-06-2023.jpg" alt="Photography by Jeremy Colameo"></button>
+            <button class="photo-item" data-full="assets/images/photography/ig-07-oct25.jpg"><img src="assets/images/photography/ig-07-oct25.jpg" alt="Photography by Jeremy Colameo"></button>
+            <button class="photo-item" data-full="assets/images/photography/ig-03-sep25.jpg"><img src="assets/images/photography/ig-03-sep25.jpg" alt="Photography by Jeremy Colameo"></button>
+            <button class="photo-item" data-full="assets/images/photography/ig-08-2019.jpg"><img src="assets/images/photography/ig-08-2019.jpg" alt="Photography by Jeremy Colameo"></button>
+            <button class="photo-item" data-full="assets/images/photography/ig-04-aug25.jpg"><img src="assets/images/photography/ig-04-aug25.jpg" alt="Photography by Jeremy Colameo"></button>
+            <button class="photo-item" data-full="assets/images/photography/ig-01-oct25.jpg"><img src="assets/images/photography/ig-01-oct25.jpg" alt="Photography by Jeremy Colameo"></button>
+            <button class="photo-item" data-full="assets/images/photography/ig-05-2020.jpg"><img src="assets/images/photography/ig-05-2020.jpg" alt="Photography by Jeremy Colameo"></button>
+        </div>
+
+        <a class="btn btn-ghost reveal" href="https://www.instagram.com/jeremy.creats.things/" target="_blank" rel="noopener">Follow on Instagram</a>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="contact-inner reveal">
+            <p class="section-tag">Contact</p>
+            <h2>Got a project in mind? <span class="text-outline">Let's talk.</span></h2>
+            <p class="contact-text">Whether it's a UI/UX project, a web rebuild, a piece of
+                software, or a shoot — I'm currently open for freelance work.</p>
+            <div class="contact-actions">
+                <a href="mailto:jeremy.colameo@gmail.com" class="btn btn-primary">jeremy.colameo@gmail.com</a>
+                <a href="https://www.linkedin.com/in/jeremy-colameo/" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+                <a href="https://www.instagram.com/jeremy.creats.things/" target="_blank" rel="noopener" class="btn btn-ghost">Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <a href="#top" class="nav-logo">JC<span class="dot">.</span></a>
+            <p>© 2026 Jeremy Colameo. Designed &amp; built by me.</p>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#work">Work</a>
+                <a href="#services">Services</a>
+                <a href="#experience">Experience</a>
+                <a href="#photography">Photography</a>
+                <a href="game/index.html" target="_blank" rel="noopener">Game</a>
+                <a href="history.html">History</a>
+                <a href="https://www.linkedin.com/in/jeremy-colameo/" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PHOTO SHOWROOM (3D coverflow carousel) -->
+    <div class="showroom" id="showroom">
+        <button class="showroom-close" id="showroom-close" aria-label="Close">&times;</button>
+        <button class="showroom-nav showroom-prev" id="showroom-prev" aria-label="Previous photo">&#8249;</button>
+        <div id="showroom-canvas"></div>
+        <button class="showroom-nav showroom-next" id="showroom-next" aria-label="Next photo">&#8250;</button>
+        <div class="showroom-counter" id="showroom-counter">1 / 8</div>
+    </div>
+
+    <script src="assets/js/main.js?v=1"></script>
+</body>
+
+</html>
