@@ -83,3 +83,43 @@ collections:
               - { label: ID, name: id, widget: string, hint: "Internal identifier (not shown on the site). Keep it unique." }
               - { label: Image, name: src, widget: image }
               - { label: Alt text, name: alt, widget: string }
+
+  - name: website
+    label: Website
+    files:
+      - name: background
+        label: Background
+        file: assets/data/background.json
+        fields:
+          - { label: Section tag, name: section_tag, widget: string, hint: "Small label above the heading, e.g. `Background`." }
+          - { label: Heading, name: heading, widget: string }
+          - label: Education
+            name: education
+            widget: list
+            label_singular: Education entry
+            summary: "{{fields.title}} — {{fields.organization}}"
+            hint: "Shown together with the Experience list in ONE timeline, sorted by start year (same year: the order of these lists is kept)."
+            fields:
+              - { label: Title, name: title, widget: string, hint: "Degree, certificate or program, e.g. `HF Interaction Design`." }
+              - { label: Institution, name: organization, widget: string }
+              - { label: Location, name: location, widget: string, required: false, hint: "Optional. Shown after the institution, e.g. `Bern`." }
+              - { label: Start year, name: start_year, widget: number, value_type: int, min: 1990, max: 2100 }
+              - { label: End year, name: end_year, widget: number, value_type: int, min: 1990, max: 2100, required: false, hint: "Optional. Leave empty if there is no end year. With `Ongoing` on and no end year, the site shows `present`." }
+              - { label: Ongoing, name: ongoing, widget: boolean, default: false, hint: "On = shows the `Ongoing` badge next to the title." }
+              - { label: Description, name: description, widget: text }
+              - { label: Link, name: link, widget: string, required: false, hint: "Optional. Must start with https:// — makes the institution a link.", pattern: ["^https?://", "Must start with https://"] }
+          - label: Experience
+            name: experience
+            widget: list
+            label_singular: Experience entry
+            summary: "{{fields.title}} — {{fields.organization}}"
+            hint: "Shown together with the Education list in ONE timeline, sorted by start year (same year: the order of these lists is kept)."
+            fields:
+              - { label: Position, name: title, widget: string, hint: "Job title, e.g. `Multimedia Software Developer`." }
+              - { label: Company, name: organization, widget: string }
+              - { label: Location, name: location, widget: string, required: false, hint: "Optional. Shown after the company, e.g. `Baar`." }
+              - { label: Start year, name: start_year, widget: number, value_type: int, min: 1990, max: 2100 }
+              - { label: End year, name: end_year, widget: number, value_type: int, min: 1990, max: 2100, required: false, hint: "Optional. Leave empty if there is no end year. With `Ongoing` on and no end year, the site shows `present`." }
+              - { label: Ongoing, name: ongoing, widget: boolean, default: false, hint: "On = shows the `Ongoing` badge next to the title." }
+              - { label: Description, name: description, widget: text }
+              - { label: Link, name: link, widget: string, required: false, hint: "Optional. Must start with https:// — makes the company a link.", pattern: ["^https?://", "Must start with https://"] }

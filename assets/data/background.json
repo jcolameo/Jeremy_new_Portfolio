@@ -1,0 +1,59 @@
+{
+  "section_tag": "Background",
+  "heading": "Education & experience",
+  "education": [
+    {
+      "title": "IT Apprenticeship (EFZ), Application Development",
+      "organization": "Benedict Schule",
+      "location": "Altstetten",
+      "start_year": 2019,
+      "end_year": 2023,
+      "ongoing": false,
+      "description": "Four-year Swiss vocational apprenticeship specializing in application development — Java, SQL and object-oriented programming fundamentals."
+    },
+    {
+      "title": "C1 English Certificate",
+      "organization": "EF Education First",
+      "location": "San Diego",
+      "start_year": 2025,
+      "ongoing": false,
+      "description": "One-month language immersion in California."
+    },
+    {
+      "title": "Certified Communication Designer (HF), Interaction Design",
+      "organization": "SfGB&B",
+      "location": "Bern",
+      "start_year": 2025,
+      "end_year": 2028,
+      "ongoing": true,
+      "description": "Part-time HF degree deepening UX research, prototyping and interaction theory alongside client work."
+    }
+  ],
+  "experience": [
+    {
+      "title": "Application Development Internship",
+      "organization": "Medelexis AG",
+      "location": "Dättwil",
+      "start_year": 2021,
+      "end_year": 2023,
+      "ongoing": false,
+      "description": "Built features for Elexis, medical practice software used by doctors — Twilio SMS integration, XSLT-based invoice personalization, and SQL reporting used for national health statistics (BAG)."
+    },
+    {
+      "title": "Multimedia Software Developer",
+      "organization": "MPS Europa AG",
+      "location": "Baar",
+      "start_year": 2023,
+      "end_year": 2025,
+      "ongoing": false,
+      "description": "Migrated and rebuilt a military training simulation on WebGL (PlayCanvas) from the ground up — missions, menus, UI components and interactive web-based trainings."
+    },
+    {
+      "title": "Freelance User Tester",
+      "organization": "TestingTime",
+      "start_year": 2026,
+      "ongoing": true,
+      "description": "Running usability-testing sessions for companies including Migros, Sanitas and Ricardo — structured user feedback and UX issue identification."
+    }
+  ]
+}
