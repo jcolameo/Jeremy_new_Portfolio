@@ -1,0 +1,57 @@
+{
+  "section_tag": "Services",
+  "heading": "What I can build for you",
+  "services": [
+    {
+      "title": "Interaction Design",
+      "icon": "bolt",
+      "note": "Currently deepening this formally — HF Interaction Design, Bern",
+      "points": [
+        "UX strategy, user flows & information architecture",
+        "Wireframing & interactive prototyping (Figma)",
+        "UI design & design systems, from scratch or redesigns",
+        "Micro-interactions, motion & usability testing"
+      ]
+    },
+    {
+      "title": "Web Development",
+      "icon": "code",
+      "points": [
+        "Responsive, performant front-ends",
+        "Interactive, three.js-powered experiences",
+        "WordPress builds & redesigns, start to launch",
+        "Modernizing dated or clunky sites"
+      ]
+    },
+    {
+      "title": "Software Development",
+      "icon": "terminal",
+      "points": [
+        "Small tools, internal apps & automation",
+        "Java, Python, SQL & API integrations",
+        "Rapid, AI-assisted prototyping (\"vibe coding\")",
+        "From rough idea to working, clickable build"
+      ]
+    },
+    {
+      "title": "Photography",
+      "icon": "camera",
+      "points": [
+        "Street, travel & moment-driven photography",
+        "Editing & color grading (Lightroom)",
+        "Photo + video content for brands & campaigns",
+        "The same eye for framing I bring into UI"
+      ]
+    }
+  ],
+  "tools": [
+    "Figma",
+    "WordPress",
+    "Three.js / WebGL",
+    "Java & Python",
+    "Git",
+    "Scrum/Kanban",
+    "DaVinci Resolve",
+    "Lightroom"
+  ]
+}

@@ -87,6 +87,42 @@ collections:
   - name: website
     label: Website
     files:
+      - name: services
+        label: Services
+        file: assets/data/services.json
+        fields:
+          - { label: Section tag, name: section_tag, widget: string, hint: "Small label above the heading, e.g. `Services`." }
+          - { label: Heading, name: heading, widget: string }
+          - label: Services
+            name: services
+            widget: list
+            label_singular: Service
+            summary: "{{fields.title}}"
+            hint: "One entry = one card on the site; the order here is the order on the site. The number in \"N Services offered\" (About section) is counted from this list automatically — don't type it anywhere."
+            fields:
+              - { label: Title, name: title, widget: string }
+              - label: Icon
+                name: icon
+                widget: select
+                options:
+                  - { label: Lightning bolt, value: bolt }
+                  - { label: Code brackets, value: code }
+                  - { label: Terminal window, value: terminal }
+                  - { label: Camera, value: camera }
+              - { label: Note, name: note, widget: string, required: false, hint: "Optional. Small line under the title (currently only used for Interaction Design)." }
+              - label: Points
+                name: points
+                widget: list
+                label_singular: Point
+                hint: "Bullet points on the card, in this order."
+                field: { label: Point, name: point, widget: string }
+          - label: Tools
+            name: tools
+            widget: list
+            required: false
+            label_singular: Tool
+            hint: "Optional. The line of tool names below the cards, shown in this order separated by ·."
+            field: { label: Tool, name: tool, widget: string }
       - name: background
         label: Background
         file: assets/data/background.json
@@ -123,3 +159,28 @@ collections:
               - { label: Ongoing, name: ongoing, widget: boolean, default: false, hint: "On = shows the `Ongoing` badge next to the title." }
               - { label: Description, name: description, widget: text }
               - { label: Link, name: link, widget: string, required: false, hint: "Optional. Must start with https:// — makes the company a link.", pattern: ["^https?://", "Must start with https://"] }
+
+      - name: contact
+        label: Contact & Links
+        file: assets/data/contact.json
+        fields:
+          - { label: Section tag, name: section_tag, widget: string, hint: "Small label above the heading, e.g. `Contact`." }
+          - { label: Heading, name: heading_lead, widget: string, hint: "First part of the heading, e.g. `Got a project in mind?`." }
+          - { label: Heading (highlighted part), name: heading_accent, widget: string, required: false, hint: "Optional. Shown in outline style after the heading, e.g. `Let's talk.` Leave empty for none." }
+          - { label: Text, name: text, widget: text }
+          - label: Email
+            name: email
+            widget: string
+            hint: "The address behind the email button (mailto link). Change it only here — it is not shown as text on the site."
+            pattern: ["^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$", "Enter a valid email address, e.g. name@example.com"]
+          - { label: Email button label, name: email_button_label, widget: string, default: "Email me", hint: "Visible text of the email button, e.g. `Email me`. Don't put the address here." }
+          - label: LinkedIn URL
+            name: linkedin_url
+            widget: string
+            hint: "Full profile address, starting with https://. Used for the Contact button and the footer link."
+            pattern: ["^https://\\S+$", "Must start with https://"]
+          - label: Instagram handle
+            name: instagram_handle
+            widget: string
+            hint: "Handle only, e.g. `jeremy.creats.things` — no @ and no URL. Used for the Contact button, the Photography link and the @handle text."
+            pattern: ["^[A-Za-z0-9._]{1,30}$", "Only the handle: letters, numbers, . and _ (no @, no URL)"]

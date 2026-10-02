@@ -151,6 +151,181 @@
             });
     }
 
+    /* ---- Contact & links: one source (assets/data/contact.json) ----
+       Contact section texts are rendered into #contact-tag / #contact-heading /
+       #contact-text. Every email / LinkedIn / Instagram reference in the HTML is
+       a bare element marked data-contact-link="email|linkedin|instagram"; its href
+       is set here, and an optional data-contact-text fills its visible text.
+       A link whose value is missing or invalid is removed instead of left
+       pointing nowhere (no href="null"). */
+    const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const INSTAGRAM_HANDLE_PATTERN = /^[A-Za-z0-9._]+$/;
+
+    function contactEmail(data) {
+        const value = String(data.email == null ? '' : data.email).trim();
+        return EMAIL_PATTERN.test(value) ? value : '';
+    }
+
+    function contactInstagramHandle(data) {
+        const value = String(data.instagram_handle == null ? '' : data.instagram_handle)
+            .trim().replace(/^@/, '');
+        return INSTAGRAM_HANDLE_PATTERN.test(value) ? value : '';
+    }
+
+    function applyContactLinks(data) {
+        const email = contactEmail(data);
+        const handle = contactInstagramHandle(data);
+        const targets = {
+            email: email ? `mailto:${email}` : '',
+            linkedin: httpUrl(data.linkedin_url),
+            instagram: handle ? `https://www.instagram.com/${handle}/` : ''
+        };
+        const texts = {
+            'email-label': String(data.email_button_label == null ? '' : data.email_button_label).trim() || 'Email me',
+            'instagram-handle': handle ? `@${handle}` : ''
+        };
+
+        document.querySelectorAll('[data-contact-link]').forEach((el) => {
+            const href = targets[el.dataset.contactLink];
+            if (!href) { el.remove(); return; }
+            el.setAttribute('href', href);
+            const textKey = el.dataset.contactText;
+            if (textKey && texts[textKey]) el.textContent = texts[textKey];
+        });
+    }
+
+    function renderContact(data) {
+        const tag = document.getElementById('contact-tag');
+        const heading = document.getElementById('contact-heading');
+        const text = document.getElementById('contact-text');
+        if (tag) tag.textContent = data.section_tag == null ? '' : data.section_tag;
+        if (text) text.textContent = data.text == null ? '' : data.text;
+        if (heading) {
+            heading.textContent = data.heading_lead == null ? '' : data.heading_lead;
+            const accent = String(data.heading_accent == null ? '' : data.heading_accent).trim();
+            if (accent) {
+                const span = document.createElement('span');
+                span.className = 'text-outline';
+                span.textContent = accent;
+                heading.appendChild(document.createTextNode(' '));
+                heading.appendChild(span);
+            }
+        }
+        applyContactLinks(data);
+
+        // The section grows after load: let ScrollTrigger re-measure, and put a
+        // deep link (/#contact) back on its anchor unless the visitor has scrolled.
+        if (window.ScrollTrigger) window.ScrollTrigger.refresh();
+        restoreHashPosition();
+    }
+
+    function loadContact() {
+        fetch('assets/data/contact.json')
+            .then((r) => {
+                if (!r.ok) throw new Error(`HTTP ${r.status}`);
+                return r.json();
+            })
+            .then(renderContact)
+            .catch((err) => {
+                console.error('Contact failed to load from assets/data/contact.json:', err);
+                applyContactLinks({});
+                const section = document.getElementById('contact');
+                if (section) section.style.display = 'none';
+            });
+    }
+
+    /* ---- Services: cards, tool strip and the "N Services offered" fact ----
+       assets/data/services.json holds the section tag/heading, the service
+       cards and the tool line. The number in the About facts ("N Services
+       offered") is NOT stored anywhere: it is the number of service cards.
+       Icons are chosen by key; the SVG markup lives here (same shapes as before). */
+    const SERVICE_ICONS = {
+        bolt: '<path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/>',
+        code: '<path d="m8 6-6 6 6 6"/><path d="m16 6 6 6-6 6"/>',
+        terminal: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3"/><path d="M13 15h4"/>',
+        camera: '<path d="M4 8h3l2-2h6l2 2h3v11H4Z"/><circle cx="12" cy="13" r="3.4"/>'
+    };
+
+    function cleanText(value) {
+        return String(value == null ? '' : value).trim();
+    }
+
+    function cleanTextList(value) {
+        return (Array.isArray(value) ? value : []).map(cleanText).filter(Boolean);
+    }
+
+    function serviceCardHtml(service) {
+        const icon = Object.prototype.hasOwnProperty.call(SERVICE_ICONS, service.icon)
+            ? `<div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">${SERVICE_ICONS[service.icon]}</svg>
+                </div>`
+            : '';
+        const title = cleanText(service.title);
+        const note = cleanText(service.note);
+        const points = cleanTextList(service.points);
+
+        return `<div class="service-card reveal">
+                ${icon}
+                ${title ? `<h3>${escapeHtml(title)}</h3>` : ''}
+                ${note ? `<p class="service-note">${escapeHtml(note)}</p>` : ''}
+                ${points.length ? `<ul class="service-list">${points.map((p) => `<li>${escapeHtml(p)}</li>`).join('')}</ul>` : ''}
+            </div>`;
+    }
+
+    function renderServices(data) {
+        const section = document.getElementById('services');
+        const tag = document.getElementById('services-tag');
+        const heading = document.getElementById('services-heading');
+        const grid = document.getElementById('services-grid');
+        const toolStrip = document.getElementById('services-tools');
+        const countEl = document.getElementById('services-count');
+        const countFact = countEl && countEl.closest('.fact');
+
+        const services = (Array.isArray(data.services) ? data.services : [])
+            .filter((service) => service && typeof service === 'object');
+        const tools = cleanTextList(data.tools);
+
+        if (tag) tag.textContent = cleanText(data.section_tag);
+        if (heading) heading.textContent = cleanText(data.heading);
+
+        if (grid) {
+            grid.innerHTML = services.map(serviceCardHtml).join('');
+            if (window.registerReveals) window.registerReveals(grid.querySelectorAll('.reveal'));
+        }
+        if (toolStrip) {
+            if (tools.length) toolStrip.textContent = tools.join(' · ');
+            else toolStrip.remove();
+        }
+
+        // "N Services offered": always the real number of cards, never a stored value.
+        if (countEl) {
+            if (services.length) countEl.textContent = String(services.length);
+            else if (countFact) countFact.remove();
+        }
+        if (!services.length && section) section.style.display = 'none';
+
+        // The section grows after load: re-measure ScrollTrigger and restore a deep link.
+        if (window.ScrollTrigger) window.ScrollTrigger.refresh();
+        restoreHashPosition();
+    }
+
+    function loadServices() {
+        fetch('assets/data/services.json')
+            .then((r) => {
+                if (!r.ok) throw new Error(`HTTP ${r.status}`);
+                return r.json();
+            })
+            .then(renderServices)
+            .catch((err) => {
+                console.error('Services failed to load from assets/data/services.json:', err);
+                const section = document.getElementById('services');
+                if (section) section.style.display = 'none';
+                const countEl = document.getElementById('services-count');
+                const countFact = countEl && countEl.closest('.fact');
+                if (countFact) countFact.remove();
+            });
+    }
+
     Promise.all([
         fetch('assets/data/work.json').then(r => r.json()),
         fetch('assets/data/clients.json').then(r => r.json()),
@@ -178,4 +353,6 @@
     });
 
     loadBackground();
+    loadContact();
+    loadServices();
 })();

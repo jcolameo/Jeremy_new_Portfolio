@@ -125,7 +125,7 @@
 
             <div class="facts reveal">
                 <div class="fact">
-                    <span class="fact-num">7</span>
+                    <span class="fact-num" id="services-count"></span>
                     <span class="fact-label">Services offered</span>
                 </div>
                 <div class="fact">
@@ -146,65 +146,14 @@
 
     <!-- SERVICES -->
     <section class="services" id="services">
-        <p class="section-tag reveal">Services</p>
-        <h2 class="reveal">What I can build for you</h2>
+        <p class="section-tag reveal" id="services-tag"></p>
+        <h2 class="reveal" id="services-heading"></h2>
 
-        <div class="services-grid services-grid-4">
-            <div class="service-card reveal">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg>
-                </div>
-                <h3>Interaction Design</h3>
-                <p class="service-note">Currently deepening this formally — HF Interaction Design, Bern</p>
-                <ul class="service-list">
-                    <li>UX strategy, user flows &amp; information architecture</li>
-                    <li>Wireframing &amp; interactive prototyping (Figma)</li>
-                    <li>UI design &amp; design systems, from scratch or redesigns</li>
-                    <li>Micro-interactions, motion &amp; usability testing</li>
-                </ul>
-            </div>
-
-            <div class="service-card reveal">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m8 6-6 6 6 6"/><path d="m16 6 6 6-6 6"/></svg>
-                </div>
-                <h3>Web Development</h3>
-                <ul class="service-list">
-                    <li>Responsive, performant front-ends</li>
-                    <li>Interactive, three.js-powered experiences</li>
-                    <li>WordPress builds &amp; redesigns, start to launch</li>
-                    <li>Modernizing dated or clunky sites</li>
-                </ul>
-            </div>
-
-            <div class="service-card reveal">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3"/><path d="M13 15h4"/></svg>
-                </div>
-                <h3>Software Development</h3>
-                <ul class="service-list">
-                    <li>Small tools, internal apps &amp; automation</li>
-                    <li>Java, Python, SQL &amp; API integrations</li>
-                    <li>Rapid, AI-assisted prototyping ("vibe coding")</li>
-                    <li>From rough idea to working, clickable build</li>
-                </ul>
-            </div>
-
-            <div class="service-card reveal">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 8h3l2-2h6l2 2h3v11H4Z"/><circle cx="12" cy="13" r="3.4"/></svg>
-                </div>
-                <h3>Photography</h3>
-                <ul class="service-list">
-                    <li>Street, travel &amp; moment-driven photography</li>
-                    <li>Editing &amp; color grading (Lightroom)</li>
-                    <li>Photo + video content for brands &amp; campaigns</li>
-                    <li>The same eye for framing I bring into UI</li>
-                </ul>
-            </div>
+        <div class="services-grid services-grid-4" id="services-grid">
+            <!-- rendered from assets/data/services.json by assets/js/content.js -->
         </div>
 
-        <p class="tool-strip reveal">Figma · WordPress · Three.js / WebGL · Java &amp; Python · Git · Scrum/Kanban · DaVinci Resolve · Lightroom</p>
+        <p class="tool-strip reveal" id="services-tools"></p>
     </section>
 
     <!-- EXPERIENCE -->
@@ -242,27 +191,27 @@
         <p class="section-tag reveal">Photography</p>
         <h2 class="reveal">Sometimes stuck in the Figma tunnel, mostly out and about.</h2>
         <p class="photo-sub reveal">A few frames from
-            <a href="https://www.instagram.com/jeremy.creats.things/" target="_blank" rel="noopener">@jeremy.creats.things</a>.
+            <a data-contact-link="instagram" data-contact-text="instagram-handle" target="_blank" rel="noopener"></a>.
         </p>
 
         <div class="photo-grid" id="photo-grid">
             <!-- rendered from assets/data/photography.json by assets/js/content.js -->
         </div>
 
-        <a class="btn btn-ghost reveal" href="https://www.instagram.com/jeremy.creats.things/" target="_blank" rel="noopener">Follow on Instagram</a>
+        <a class="btn btn-ghost reveal" data-contact-link="instagram" target="_blank" rel="noopener">Follow on Instagram</a>
     </section>
 
     <!-- CONTACT -->
     <section class="contact" id="contact">
         <div class="contact-inner reveal">
-            <p class="section-tag">Contact</p>
-            <h2>Got a project in mind? <span class="text-outline">Let's talk.</span></h2>
-            <p class="contact-text">Whether it's a UI/UX project, a web rebuild, a piece of
-                software, or a shoot — I'm currently open for freelance work.</p>
+            <!-- texts, email, LinkedIn and Instagram come from assets/data/contact.json via assets/js/content.js -->
+            <p class="section-tag" id="contact-tag"></p>
+            <h2 id="contact-heading"></h2>
+            <p class="contact-text" id="contact-text"></p>
             <div class="contact-actions">
-                <a href="mailto:jeremy.colameo@gmail.com" class="btn btn-primary">jeremy.colameo@gmail.com</a>
-                <a href="https://www.linkedin.com/in/jeremy-colameo/" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
-                <a href="https://www.instagram.com/jeremy.creats.things/" target="_blank" rel="noopener" class="btn btn-ghost">Instagram</a>
+                <a data-contact-link="email" data-contact-text="email-label" class="btn btn-primary"></a>
+                <a data-contact-link="linkedin" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+                <a data-contact-link="instagram" target="_blank" rel="noopener" class="btn btn-ghost">Instagram</a>
             </div>
         </div>
     </section>
@@ -279,7 +228,7 @@
                 <a href="#photography">Photography</a>
                 <a href="game/index.html" target="_blank" rel="noopener">Game</a>
                 <a href="history.html">History</a>
-                <a href="https://www.linkedin.com/in/jeremy-colameo/" target="_blank" rel="noopener">LinkedIn</a>
+                <a data-contact-link="linkedin" target="_blank" rel="noopener">LinkedIn</a>
             </div>
         </div>
     </footer>
@@ -293,7 +242,7 @@
         <div class="showroom-counter" id="showroom-counter">1 / 8</div>
     </div>
 
-    <script src="assets/js/content.js?v=2"></script>
+    <script src="assets/js/content.js?v=4"></script>
     <script src="assets/js/main.js?v=2"></script>
 </body>
 
