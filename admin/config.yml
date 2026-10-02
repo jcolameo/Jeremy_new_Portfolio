@@ -87,6 +87,46 @@ collections:
   - name: website
     label: Website
     files:
+      - name: about
+        label: About
+        file: assets/data/about.json
+        fields:
+          - { label: Section tag, name: section_tag, widget: string, hint: "Small label above the heading, e.g. `About Me`." }
+          - { label: Heading, name: heading, widget: string }
+          - label: Portrait
+            name: portrait
+            widget: object
+            required: false
+            hint: "The picture next to the text. The current portrait is already in place — only replace it if you really want a new photo."
+            fields:
+              - { label: Image, name: image, widget: image, required: false, hint: "Keep the existing portrait unless you want a new one. For a new portrait use at least about 440 × 440 px (it is shown at 220 px, so this stays sharp on high-resolution screens)." }
+              - { label: Alt text, name: alt, widget: string, hint: "Short description of the picture for screen readers and search engines, e.g. `Jeremy Colameo`. Update it whenever you change the portrait." }
+          - label: Paragraphs
+            name: paragraphs
+            widget: list
+            required: false
+            label_singular: Paragraph
+            hint: "One entry = one paragraph, shown in this order. Plain text, no HTML."
+            field: { label: Paragraph, name: paragraph, widget: text }
+          - label: Hobbies
+            name: hobbies
+            widget: list
+            required: false
+            label_singular: Hobby
+            hint: "Small tags below the text, shown in this order. Leave empty to hide them."
+            field: { label: Hobby, name: hobby, widget: string }
+          - { label: Services label, name: services_label, widget: string, hint: "Text under the automatic number in the first facts tile, e.g. `Services offered`. The number itself is counted from the Services list — never type it." }
+          - label: Facts
+            name: facts
+            widget: list
+            min: 3
+            max: 3
+            label_singular: Fact
+            summary: "{{fields.value}} — {{fields.label}}"
+            hint: "Exactly 3 facts. The first tile (number of services) is added automatically in front of them. Value = the big text (e.g. `CH`, `∞`, `Open`), Label = the small line under it."
+            fields:
+              - { label: Value, name: value, widget: string }
+              - { label: Label, name: label, widget: string }
       - name: services
         label: Services
         file: assets/data/services.json

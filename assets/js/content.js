@@ -326,6 +326,83 @@
             });
     }
 
+    /* ---- About: tag, heading, portrait, paragraphs, hobbies and facts ----
+       assets/data/about.json fills the static About markup. The first facts tile
+       ("N Services offered") is a static container: its NUMBER is written by
+       renderServices() from services.length and is never stored here, only its
+       LABEL (services_label) comes from about.json. Both loaders touch separate
+       elements of that tile, so they can finish in any order. The three
+       editorial facts are appended after it. */
+    function renderAbout(data) {
+        const tag = document.getElementById('about-tag');
+        const heading = document.getElementById('about-heading');
+        const portrait = document.getElementById('about-portrait');
+        const copy = document.getElementById('about-copy');
+        const hobbiesEl = document.getElementById('about-hobbies');
+        const facts = document.getElementById('about-facts');
+        const countLabel = document.getElementById('services-count-label');
+
+        if (tag) tag.textContent = cleanText(data.section_tag);
+        if (heading) heading.textContent = cleanText(data.heading);
+
+        if (portrait) {
+            const image = data.portrait && typeof data.portrait === 'object' ? data.portrait : {};
+            const src = cleanText(image.image);
+            portrait.innerHTML = src
+                ? `<img src="${escapeHtml(src)}" alt="${escapeHtml(cleanText(image.alt))}">`
+                : '';
+        }
+
+        // Paragraphs go in front of the hobby tags, no extra wrapper.
+        const paragraphs = cleanTextList(data.paragraphs);
+        if (copy && paragraphs.length) {
+            copy.insertAdjacentHTML('afterbegin',
+                paragraphs.map((text) => `<p class="about-text reveal">${escapeHtml(text)}</p>`).join(''));
+            if (window.registerReveals) window.registerReveals(copy.querySelectorAll('.about-text.reveal'));
+        }
+
+        const hobbies = cleanTextList(data.hobbies);
+        if (hobbiesEl) {
+            if (hobbies.length) hobbiesEl.innerHTML = hobbies.map((hobby) => `<span>${escapeHtml(hobby)}</span>`).join('');
+            else hobbiesEl.remove();
+        }
+
+        // The services tile: label from here, number from renderServices().
+        const label = cleanText(data.services_label);
+        if (countLabel) {
+            if (label) countLabel.textContent = label;
+            else countLabel.closest('.fact').remove();
+        }
+        if (facts) {
+            const items = (Array.isArray(data.facts) ? data.facts : [])
+                .filter((fact) => fact && typeof fact === 'object')
+                .map((fact) => ({ value: cleanText(fact.value), label: cleanText(fact.label) }))
+                .filter((fact) => fact.value || fact.label);
+            facts.insertAdjacentHTML('beforeend', items.map((fact) => `<div class="fact">
+                    <span class="fact-num">${escapeHtml(fact.value)}</span>
+                    <span class="fact-label">${escapeHtml(fact.label)}</span>
+                </div>`).join(''));
+        }
+
+        // The section grows after load: re-measure ScrollTrigger and restore a deep link.
+        if (window.ScrollTrigger) window.ScrollTrigger.refresh();
+        restoreHashPosition();
+    }
+
+    function loadAbout() {
+        fetch('assets/data/about.json')
+            .then((r) => {
+                if (!r.ok) throw new Error(`HTTP ${r.status}`);
+                return r.json();
+            })
+            .then(renderAbout)
+            .catch((err) => {
+                console.error('About failed to load from assets/data/about.json:', err);
+                const section = document.getElementById('about');
+                if (section) section.style.display = 'none';
+            });
+    }
+
     Promise.all([
         fetch('assets/data/work.json').then(r => r.json()),
         fetch('assets/data/clients.json').then(r => r.json()),
@@ -355,4 +432,5 @@
     loadBackground();
     loadContact();
     loadServices();
+    loadAbout();
 })();

@@ -90,55 +90,22 @@
     <!-- ABOUT -->
     <section class="about" id="about">
         <div class="about-inner">
-            <p class="section-tag reveal">About Me</p>
-            <h2 class="reveal">Designing, coding &amp; capturing moments.</h2>
+            <!-- texts, portrait, hobbies and facts come from assets/data/about.json via assets/js/content.js -->
+            <p class="section-tag reveal" id="about-tag"></p>
+            <h2 class="reveal" id="about-heading"></h2>
 
             <div class="about-grid">
-                <div class="about-portrait reveal">
-                    <img src="assets/images/profile/jeremy-portrait.jpg" alt="Jeremy Colameo">
-                </div>
-                <div class="about-copy">
-                    <p class="about-text reveal">
-                        I move between disciplines on purpose — a UI screen, the code that
-                        makes it work, and a photo that tells a story are all the same
-                        problem to me: paying attention to what actually matters, then
-                        cutting the rest. I work fast, ship real things, and use AI-assisted
-                        "vibe coding" workflows to get from idea to working prototype in days,
-                        not months.
-                    </p>
-                    <p class="about-text reveal">
-                        Off-screen I'm usually at the gym or boxing, out walking the dog,
-                        losing slowly at chess, editing a video, or grinding Duolingo Spanish.
-                        Grew up in Switzerland, Italian roots — I like things precise and I
-                        like them to look good.
-                    </p>
-                    <div class="hobby-tags reveal">
-                        <span>Boxing &amp; Gym</span>
-                        <span>Photography</span>
-                        <span>Video Editing</span>
-                        <span>Chess</span>
-                        <span>Learning Spanish</span>
-                        <span>Dog Walks</span>
-                    </div>
+                <div class="about-portrait reveal" id="about-portrait"></div>
+                <div class="about-copy" id="about-copy">
+                    <div class="hobby-tags reveal" id="about-hobbies"></div>
                 </div>
             </div>
 
-            <div class="facts reveal">
+            <div class="facts reveal" id="about-facts">
+                <!-- first tile: the number is counted from services.json (see renderServices), its label comes from about.json -->
                 <div class="fact">
                     <span class="fact-num" id="services-count"></span>
-                    <span class="fact-label">Services offered</span>
-                </div>
-                <div class="fact">
-                    <span class="fact-num">CH</span>
-                    <span class="fact-label">Based in Switzerland</span>
-                </div>
-                <div class="fact">
-                    <span class="fact-num">∞</span>
-                    <span class="fact-label">Figma tabs open</span>
-                </div>
-                <div class="fact">
-                    <span class="fact-num">Open</span>
-                    <span class="fact-label">For freelance work</span>
+                    <span class="fact-label" id="services-count-label"></span>
                 </div>
             </div>
         </div>
@@ -242,7 +209,7 @@
         <div class="showroom-counter" id="showroom-counter">1 / 8</div>
     </div>
 
-    <script src="assets/js/content.js?v=4"></script>
+    <script src="assets/js/content.js?v=5"></script>
     <script src="assets/js/main.js?v=2"></script>
 </body>
 

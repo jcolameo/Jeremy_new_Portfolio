@@ -1,0 +1,35 @@
+{
+  "section_tag": "About Me",
+  "heading": "Designing, coding & capturing moments.",
+  "portrait": {
+    "image": "assets/images/profile/jeremy-portrait.jpg",
+    "alt": "Jeremy Colameo"
+  },
+  "paragraphs": [
+    "I move between disciplines on purpose — a UI screen, the code that makes it work, and a photo that tells a story are all the same problem to me: paying attention to what actually matters, then cutting the rest. I work fast, ship real things, and use AI-assisted \"vibe coding\" workflows to get from idea to working prototype in days, not months.",
+    "Off-screen I'm usually at the gym or boxing, out walking the dog, losing slowly at chess, editing a video, or grinding Duolingo Spanish. Grew up in Switzerland, Italian roots — I like things precise and I like them to look good."
+  ],
+  "hobbies": [
+    "Boxing & Gym",
+    "Photography",
+    "Video Editing",
+    "Chess",
+    "Learning Spanish",
+    "Dog Walks"
+  ],
+  "services_label": "Services offered",
+  "facts": [
+    {
+      "value": "CH",
+      "label": "Based in Switzerland"
+    },
+    {
+      "value": "∞",
+      "label": "Figma tabs open"
+    },
+    {
+      "value": "Open",
+      "label": "For freelance work"
+    }
+  ]
+}
