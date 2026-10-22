@@ -1,7 +1,7 @@
 {
   "projects": [
     {
-      "badge": "Coming Soon",
+      "badge": "",
       "media": {
         "type": "image",
         "src": "assets/images/projects/arcware-thumb.png",
@@ -12,8 +12,8 @@
       "link": "https://arcware.io/",
       "id": "arcware",
       "disabled": false,
-      "description": "A Three.js & GSAP prototype for arcware.io: a scroll-driven 3D scene with an interactive rotating logo and service cards.",
-      "category": "3D Web · Three.js"
+      "description": "Dependency-free scroll-driven homepage for arcware.io: particle network, rotating logo and a 3D-style service-card orbit built with CSS 3D transforms and canvas, shipped as a WordPress plugin.",
+      "category": "3D Web · CSS 3D Transforms"
     },
     {
       "badge": null,
